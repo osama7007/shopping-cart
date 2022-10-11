@@ -1,0 +1,15 @@
+.product-details {
+    background: #111;
+    height: 100vh;
+    color: #fff;
+
+}
+img{
+    border-radius: 50%;
+}
+.stock{
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 2px #ffd;
+    width: 400px;
+    height: 400px;
+}

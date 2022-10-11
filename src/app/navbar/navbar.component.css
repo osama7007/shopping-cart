@@ -1,0 +1,13 @@
+div.cart{
+    width: 30px;
+    display: inline-block;
+}
+a{
+    color: lightskyblue;
+}
+.cart img{
+    box-shadow: 0px 0px 6px 4px #00ffe7;
+    border-radius: 50%;
+    line-height: 30px;
+    margin-top: 7px;
+}

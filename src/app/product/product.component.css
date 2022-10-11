@@ -1,0 +1,28 @@
+.added{
+    margin:auto;
+    width:30%;
+    display: block;
+    background-color:rgb(0, 196, 0);
+    opacity: .8;
+    color: #fff;
+    visibility: visible;
+    border-radius: 5px;
+    transition:all .5s;
+}
+.notAdded{
+    visibility: hidden;
+    opacity: 0;
+}
+.productPoster{
+    width: 350px;
+    height: 500px !important;
+    box-shadow: 0px 0px 3px 1px lightgreen;
+    color: #fff;
+}
+.posterImg{
+    width: 200px;
+    padding: 10px;
+}
+.posterImg img{
+    border-radius: 50%;
+}

@@ -1,0 +1,29 @@
+
+    <p class="text-center">Add Address</p>
+<div [formGroup]="form" class="address-wrapper p-2">
+    <ng-container formArrayName="addresses">
+        <ng-container *ngFor = "let address of addresses.controls; let i = index">
+            <div    >
+                <div class="m-2">
+                    <input formControlName ='title' type="text" placeholder="Address">
+                </div>
+                <div class="m-2">
+                    <input formControlName ='level' type="text" placeholder="street">
+                </div>
+                <div class="m-2">
+                    <input formControlName ='level' type="text" placeholder="country">
+                </div>
+                <div class="m-2">
+                    <input formControlName ='level' type="text" placeholder="city">
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger m-2" (click)="deleteAddress(i)">delete</button>
+            </div>
+
+        </ng-container>
+    </ng-container>
+        <button type="button" class="btn btn-primary m-2" (click)="addAddress()">add</button>
+</div>
+
+<!-- [formGroup]="lessonForm" -->

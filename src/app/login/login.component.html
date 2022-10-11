@@ -1,0 +1,24 @@
+<div class="login">
+  <form #loginForm = "ngForm" (ngSubmit)="handleLoginForm(loginForm)"  class="w-25 m-auto mt-5 p-5 border-info border">
+    <div class="mb-3">
+      <label for="loginText" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="loginText" aria-describedby="emailHelp" #loginText = "ngModel" name = "loginText" ngModel required>
+    </div>
+    <div *ngIf = "loginText.touched && !loginText.valid || loginForm.submitted && !loginText.valid ">
+       <div id="nameHelp" *ngIf="loginText.errors && loginText.errors['required']" class="text-danger form-text">
+          Required field
+      </div> 
+    </div>
+    <div class="mb-3">
+      <label for="pass" class="form-label">Password</label>
+      <input type="password" class="form-control" id="pass" #pass = "ngModel" name = "pass" ngModel required>
+    </div>
+    <div *ngIf = "pass.touched && !pass.valid || loginForm.submitted && !pass.valid ">
+       <div id="nameHelp" *ngIf="pass.errors && pass.errors['required']" class="text-danger form-text">
+          Required field
+      </div> 
+    </div>
+    <button type="submit" class="btn btn-primary mx-2">Submit</button>
+      <button  class="btn btn-secondary mx-4"> <a routerLink="/register" class=" text-white">Sign Up</a></button>
+  </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="product-details d-flex justify-content-center align-items-center">
+<div class="posterImg w-25">
+    <img class="w-100" [src]="productDetails.image" alt="photo">
+</div>
+<div class="stock border border-dark p-5 m-5 text-center">
+    <p>{{productDetails.name}}</p>
+    <hr>
+    <p>{{productDetails.price  | currency: 'AUD' : " EG" : '2.1-1' : 'fr'}}</p>
+     <hr>
+    <p>{{productDetails.createdAt | date}}</p>
+     <hr>
+    <div *ngIf = "productDetails.count >0; then inStock else outStock"></div>
+    <ng-template #outStock>
+        <p class="text-danger">Out of Stock</p>
+        <p>count :  {{productDetails.count}}</p>
+    </ng-template>
+    <ng-template #inStock>
+        <p  class="text-success" >in stock</p>
+        <hr>
+        <p>count :  {{productDetails.count}}</p>
+    </ng-template>
+</div>
+</div>

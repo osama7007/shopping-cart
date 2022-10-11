@@ -1,0 +1,25 @@
+<div class="productPoster text-center h-100 pb-5 m-auto"  >
+    <a routerLink="product-details" (click) = "addProductDetails()" (click)="setId(product.id)">
+        <div class="posterImg m-auto">
+            <img class="w-100" [src]="product.image" alt="photo">
+        </div>
+    </a>
+       <div class="stock">
+           <p>{{product.name}}</p>
+           <p>{{product.price  | currency: 'AUD' : " EG" : '2.1-1' : 'fr'}}</p>
+           <p>{{product.createdAt | date}}</p>
+           <div *ngIf = "product.count >0; then inStock else outStock"></div>
+           <ng-template #outStock>
+               <p class="text-danger">Out of Stock</p>
+               <p>count :  {{product.count}}</p>
+               <button type="button" class="btn btn-danger" [disabled]="product.count<1">ADD TO CART</button>
+           </ng-template>
+           <ng-template #inStock>
+               <p  class="text-success" >in stock</p>
+               <p>count :  {{product.count}}</p>
+               <button type="button" class="btn btn-primary "  (click)="addToCart(product)" (click)="addClass()">ADD TO CART
+            </button> 
+        </ng-template>
+    </div>
+    <span  [ngClass] = " status ? 'added' : 'notAdded' " class="added-to-cart"> Added To Cart</span>
+</div>

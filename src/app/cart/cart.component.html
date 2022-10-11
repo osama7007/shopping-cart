@@ -1,0 +1,31 @@
+  <div *ngIf = "selectedProduct.length>0;then showCart else empty"></div>
+ 
+  <ng-template #showCart   class="cart py-5 d-flex justify-content-center flex-column" >
+      <table >
+          <tr class="head">
+              <td>Item</td>
+              <td>Name</td>
+              <td>Price</td>
+              <td>Aggregate</td>
+              <td>Quantity</td>
+              <td>Remove</td>
+          </tr>
+          <tr *ngFor="let productDetails of selectedProduct; let i = index">
+              <td class="col-img"><img class="w-100" src="{{productDetails.image}}" alt="product-photo"> </td>
+              <td class="w-25">{{productDetails.name}}</td>
+              <td>{{productDetails.price | currency: 'AUD' : " EG" : '2.1-1' : 'fr'}}</td> 
+              <!-- aggregate -->
+              <td>{{productDetails.price*selectedProduct[i].cartQuantity | currency: 'AUD' : " EG" : '2.1-1' : 'fr'}}</td>
+              <td><button class="btn btn-danger mx-1" (click)="minusProduct(i)" > - </button>{{selectedProduct[i].cartQuantity}} <button class =" mx-1 btn btn-primary" (click)="plusProduct(i)">+</button>    </td>
+              <td> <button class="btn btn-danger fs-4 remove" (click)="deleteProduct(i)" (click)="deleteFromCartList(i)"><img class="w-100" src="https://icon-library.com/images/trash-bin-icon/trash-bin-icon-18.jpg" alt="remove-photo"></button></td>
+          </tr>
+        </table>
+        <p class="totalPrice text-center bg-warning text-white fw-bold">Total Price : <span> {{totalPriceValue}}</span></p>
+  </ng-template>
+    <ng-template #empty >
+        <div class=  "empty  d-flex align-items-center flex-column vh-100 justify-content-center bg-dark">
+            <p>cart is empty get some products !</p>
+           
+            <a routerLink="">  <img class="shoppingImg w-100" src="https://img.freepik.com/premium-vector/hand-with-multicolored-shopping-bags-big-sale-concept-vector-illustration_625536-515.jpg?w=360" alt=""> </a>
+        </div>
+    </ng-template>

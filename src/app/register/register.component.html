@@ -1,0 +1,36 @@
+<div class="register-wrapper">
+  <form [formGroup] ="registerGroupe" (ngSubmit)="onSubmit()" class=" w-25 m-auto mt-2 p-2 border-info border ">
+      <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName= "name" >
+          <p *ngIf=" formControls['name'].touched && formControls['name'].invalid" class="text-danger">required</p>
+      </div>
+  
+      <div class="mb-3">
+        <label for="emial" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName= "email" >
+         <p *ngIf=" formControls['email'].touched && formControls['email'].invalid" class="text-danger"> invalid email</p>
+      </div>
+  
+      <div class="mb-3">
+        <label for="username" class="form-label">User Name</label>
+        <input type="text" class="form-control" id="username" formControlName= "username" >
+         <p *ngIf=" formControls['username'].touched && formControls['username'].invalid" class="text-danger"> required</p>
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName= "password" >
+         <p *ngIf=" formControls['password'].touched && formControls['password'].invalid" class="text-danger">required</p>
+      </div>
+  
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName= "confirmPassword" >
+         <p *ngIf=" formControls['confirmPassword'].touched && formControls['confirmPassword'].invalid" class="text-danger"> required</p>
+         <p *ngIf="formControls['password'].value !== formControls['confirmPassword'].value && formControls['confirmPassword'].touched " class="text-danger" >not matched</p>
+      </div>
+      <button type="submit" class="btn btn-success">Register</button>
+      <app-address-form></app-address-form>
+    </form>
+  </div>

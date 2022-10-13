@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, Validators , FormBuilder } from '@angular/forms';
-
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +10,7 @@ export class RegisterComponent implements OnInit {
    regex=/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/;
   registerGroupe : FormGroup;
   
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder , private registerAuth : AuthService){
     this.registerGroupe = this.fb.group({
       email :['',[ Validators.email , Validators.required , Validators.pattern(this.regex)]],
       name :['' , Validators.required],
@@ -29,5 +29,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     console.log(this.registerGroupe.controls['email'].value)
   }
- 
+  changeAuth(){
+    this.registerAuth.setRegisterAuth(true);
+  }
+
 }

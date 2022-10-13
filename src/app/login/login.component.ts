@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiHolderService } from '../services/api-holder.service';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private api:ApiHolderService) {
+  constructor(private logIn:AuthService) {
    }
 
   ngOnInit(): void {
   }
 
     handleLoginForm(form : any){
-      console.log(form);
+    }
+    submitted(){
+      this.logIn.setLogValue(true)
     }
 }

@@ -14,7 +14,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.idService.idValue.subscribe(val=> this.id =val)
     this.api.getProductDetails(this.id).subscribe(res=>{
-      this.productDetails =res
+      this.productDetails =res;
     });
   }
 }

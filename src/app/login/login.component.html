@@ -1,12 +1,12 @@
 <div class="login">
   <form #loginForm = "ngForm" (ngSubmit)="handleLoginForm(loginForm)"  class="w-25 m-auto mt-5 p-5 border-info border">
     <div class="mb-3">
-      <label for="loginText" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="loginText" aria-describedby="emailHelp" #loginText = "ngModel" name = "loginText" ngModel required>
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" #email = "ngModel" name = "email" ngModel required email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
     </div>
-    <div *ngIf = "loginText.touched && !loginText.valid || loginForm.submitted && !loginText.valid ">
-       <div id="nameHelp" *ngIf="loginText.errors && loginText.errors['required']" class="text-danger form-text">
-          Required field
+    <div *ngIf = "email.touched && !email.valid || loginForm.submitted && !email.valid">
+      <div id="nameHelp" *ngIf="email.errors && email.errors['required'] && email.errors['pattern']" class="text-danger form-text">
+        Required field
       </div> 
     </div>
     <div class="mb-3">
@@ -18,7 +18,8 @@
           Required field
       </div> 
     </div>
-    <button type="submit" class="btn btn-primary mx-2">Submit</button>
+    <button type="submit" class="btn btn-primary mx-2" (click)="submitted()" [disabled]=" !pass.valid || !email.valid">Submit</button>
       <button  class="btn btn-secondary mx-4"> <a routerLink="/register" class=" text-white">Sign Up</a></button>
   </form>
 </div>
+ <app-say-hello></app-say-hello>>

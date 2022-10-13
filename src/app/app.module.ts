@@ -7,17 +7,18 @@ import { AppComponent } from './app.component';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductComponent } from './product/product.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
 import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import  localeFr from '@angular/common/locales/fr';
 import { NotFoundComponentComponent } from './not-found-component/not-found-component.component';
 import { AddressFormComponent } from './address-form/address-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { LoaderComponent } from './loader/loader.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { SharedModule } from './shared/shared.module';
 registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
@@ -25,12 +26,13 @@ registerLocaleData(localeFr, 'fr');
     AllProductsComponent,
     ProductComponent,
     NavbarComponent,
-    RegisterComponent,
-    LoginComponent,
     NotFoundComponentComponent,
     AddressFormComponent,
     CartComponent,
     ProductDetailsComponent,
+    LoaderComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +40,16 @@ registerLocaleData(localeFr, 'fr');
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
   ],
-  providers: [],
+  providers: [
+     {
+        provide: HTTP_INTERCEPTORS,
+        useClass: LoaderInterceptor,
+        multi: true,
+     },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
